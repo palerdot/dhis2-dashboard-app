@@ -28,6 +28,16 @@ function HomeScreen() {
         setDashboards(dashboards)
         // set first dashboard as active
         setActiveDashboard(dashboards[0]?.id)
+        // construct starred details
+        let starred: { [key: string]: string } = {}
+        dashboards.forEach((d: any) => {
+          starred[d.id] = d.starred
+        })
+        // set initial value only for the first time app loads
+        const isFirstTime = localStorage.getItem("starred") === null
+        if (isFirstTime) {
+          localStorage.setItem("starred", JSON.stringify(starred))
+        }
       })
   }, [setDashboards, setActiveDashboard])
 
