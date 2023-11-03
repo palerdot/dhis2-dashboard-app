@@ -38,7 +38,7 @@ function Dashboard({ id, displayName, onClick, isOpen }: Props) {
   }, [id, isOpen, content, setContent])
 
   return (
-    <Card className="flex flex-col" data-testid={`dashboard-${id}`}>
+    <Card className="flex flex-col" dataTest={`dashboard-${id}`}>
       <div
         className="flex flex-row items-center space-between cursor-pointer p-4 font-medium text-xl hover:bg-slate-50"
         onClick={onClick}

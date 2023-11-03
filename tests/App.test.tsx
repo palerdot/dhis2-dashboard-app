@@ -49,6 +49,13 @@ describe("App", () => {
     await waitFor(() => {
       const appHeading = screen.getByTestId("app-heading")
       expect(appHeading).toBeInTheDocument()
+
+      // we should have the 5 dashboards
+      // loop through id and verify if there are 5 dashboards
+      DASHBOARDS.dashboards.forEach(({ id }) => {
+        const dashboard = screen.getByTestId(`dashboard-${id}`)
+        expect(dashboard).toBeInTheDocument()
+      })
     })
   })
 })
