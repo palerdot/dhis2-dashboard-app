@@ -20,8 +20,9 @@ pnpm run dev
 
 Some pointers on the code
 
-- Dashboard data is loaded only once when the user **first** opens the dashboard. This makes sure dashboards that are not open does not fetch data from the api. Subsequent open/close actions on dashboard does not repeatedly call apis
+- Dashboard data is loaded only once when the user **first** opens the dashboard. This makes sure dashboards that are not open does not fetch data from the api. Subsequent open/close actions on dashboard does not repeatedly call the apis.
 - star data is locally persisted on local storage
+- When filters are applied items are hidden instead of removing from dom to prevent rerenders when filters change.
 
 
 ### Testing
