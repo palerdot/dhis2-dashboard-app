@@ -59,7 +59,10 @@ function DashboardItem(item: DashboardItem) {
   if (isViz) {
     const showViz = filter === Filter.All || filter === Filter.Viz
     return (
-      <div className={` ${showViz ? "flex" : "hidden"} ${rowClass}`}>
+      <div
+        className={` ${showViz ? "flex" : "hidden"} ${rowClass}`}
+        data-test={showViz ? "viz-item" : "viz-item-hidden"}
+      >
         <div>
           <IconVisualizationColumn24 />
         </div>
@@ -73,7 +76,10 @@ function DashboardItem(item: DashboardItem) {
   if (isMap) {
     const showMap = filter === Filter.All || filter === Filter.Map
     return (
-      <div className={` ${showMap ? "flex" : "hidden"} ${rowClass}`}>
+      <div
+        className={` ${showMap ? "flex" : "hidden"} ${rowClass}`}
+        data-test={showMap ? "map-item" : "map-item-hidden"}
+      >
         <div>
           <IconWorld24 />
         </div>
@@ -87,7 +93,10 @@ function DashboardItem(item: DashboardItem) {
   if (isText) {
     const showText = filter === Filter.All || filter === Filter.Text
     return (
-      <div className={` ${showText ? "flex" : "hidden"} ${rowClass}`}>
+      <div
+        className={` ${showText ? "flex" : "hidden"} ${rowClass}`}
+        data-test={showText ? "text-item" : "text-item-hidden"}
+      >
         <div>
           <IconFileDocument24 />
         </div>
