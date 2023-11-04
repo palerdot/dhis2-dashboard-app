@@ -6,7 +6,7 @@ import { setupServer } from "msw/node"
 
 import App from "../src/App"
 import AppContextHolder from "../src/AppContext"
-import { DASHBOARDS } from "../src/mocks/"
+import { DASHBOARDS, getDashboardData } from "../src/mocks/"
 
 const TestApp = () => (
   <AppContextHolder>
@@ -14,11 +14,20 @@ const TestApp = () => (
   </AppContextHolder>
 )
 
-const server = setupServer(
+const server = setupServer()
+server.use(
   http.get(
     "https://gist.githubusercontent.com/kabaros/da79636249e10a7c991a4638205b1726/raw/fa044f54e7a5493b06bb51da40ecc3a9cb4cd3a5/dashboards.json",
     ({ request, params, cookies }) => {
       return HttpResponse.json(DASHBOARDS)
+    }
+  ),
+  // first dashboard content
+  http.get(
+    "https://gist.githubusercontent.com/kabaros/da79636249e10a7c991a4638205b1726/raw/fa044f54e7a5493b06bb51da40ecc3a9cb4cd3a5/nghVC4wtyzi.json",
+    // @ts-ignore
+    () => {
+      return HttpResponse.json(getDashboardData("nghVC4wtyzi"))
     }
   )
 )
@@ -46,7 +55,7 @@ describe("App", () => {
   test("heading is shown fine", async () => {
     render(<TestApp />)
     // wait for the mock request to complete
-    await waitFor(() => {
+    await waitFor(async () => {
       const appHeading = screen.getByTestId("app-heading")
       expect(appHeading).toBeInTheDocument()
 
@@ -56,6 +65,10 @@ describe("App", () => {
         const dashboard = screen.getByTestId(`dashboard-${id}`)
         expect(dashboard).toBeInTheDocument()
       })
+
+      const contents = await screen.getAllByTestId("dashboard-content")
+      // only one dashboard content should be visible
+      expect(contents).toHaveLength(1)
     })
   })
 })

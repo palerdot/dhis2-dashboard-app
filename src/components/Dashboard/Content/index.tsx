@@ -41,7 +41,7 @@ type TextItem = {
 
 function Content({ dashboardItems }: IContent) {
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full" data-test={`dashboard-content`}>
       {dashboardItems.map(item => (
         <DashboardItem key={item.id} {...item} />
       ))}

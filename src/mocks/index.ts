@@ -859,6 +859,10 @@ export const getDashboardData = (id: string) => {
         starred: false,
       }
     default:
-      return {}
+      return {
+        id: "",
+        displayName: "",
+        dashboardItems: [],
+      }
   }
 }
