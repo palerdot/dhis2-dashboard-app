@@ -23,7 +23,7 @@ function Star({ id }: { id: string }) {
 export default Star
 
 // helper function to get/set starred details to localstorage
-function getStar(id: string): boolean {
+export function getStar(id: string): boolean {
   const starred = localStorage.getItem("starred")
 
   if (!starred) {
@@ -34,7 +34,7 @@ function getStar(id: string): boolean {
   return parsed[id]
 }
 
-function setStar(id: string, status: boolean) {
+export function setStar(id: string, status: boolean) {
   const starred = localStorage.getItem("starred")
   const parsed = starred ? JSON.parse(starred) : {}
 
