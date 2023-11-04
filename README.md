@@ -34,7 +34,7 @@ Tests are present in `tests` folder and tested with `vitest + @testing-library/r
 - App is loaded fine and dashboard api data is loaded and all 5 dashboards are shown
 - Only one dashboard content is shown
 - Visible dashboard lists all the items with the default `All` filter
-- When filter is changed to `visualization` items, only visualization items are visible, and map/text items are not shown/hidden.
+- When filter is changed to `visualization`, only visualization items are visible, and map/text items are not shown.
 
 `index.test.ts` has tests for local storage interfaces.
 
