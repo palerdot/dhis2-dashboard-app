@@ -1,27 +1,39 @@
-# React + TypeScript + Vite
+# DHIS2 dashboard app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The dashboard app is bootstrapped with `vite` `react-ts` template.
 
-Currently, two official plugins are available:
+Stack
+- React + Typescript
+- Tailwind for styling
+- dhis2 UI library for ui components
+- vitest + @testing-library/react + msw  for testing
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Installation
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```shell
+pnpm install
+# run the local server
+pnpm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Code
+
+Some pointers on the code
+
+- Dashboard data is loaded only once when the user **first** opens the dashboard. This makes sure dashboards that are not open does not fetch data from the api. Subsequent open/close actions on dashboard does not repeatedly call apis
+- star data is locally persisted on local storage
+
+
+### Testing
+
+Tests are present in `tests` folder and tested with `vitest + @testing-library/react + msw  for testing`.
+
+`App.test.tsx` file tests the following
+
+- App is loaded fine and dashboard api data is loaded and all 5 dashboards are shown
+- Only one dashboard content is shown
+- Visible dashboard lists all the items with the default `All` filter
+- When filter is changed to `visualization` items, only visualization items are visible, and map/text items are not shown/hidden.
+
+`index.test.ts` has tests for local storage interfaces.
+
