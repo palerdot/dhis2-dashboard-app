@@ -1,4 +1,4 @@
-import { expect, afterEach } from "vitest"
+import { afterEach } from "vitest"
 import { cleanup, configure } from "@testing-library/react"
 // import matchers from "@testing-library/jest-dom/matchers"
 // import * as matchers from "vitest-dom/matchers"
