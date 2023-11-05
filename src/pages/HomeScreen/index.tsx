@@ -50,9 +50,9 @@ function HomeScreen() {
   }
 
   return (
-    <div className="flex flex-col space-y-4 w-2/3 mx-auto">
-      <div className="flex flex-row space-between my-4">
-        <div className="text-xl font-medium" data-test="app-heading">
+    <div className="flex flex-col space-y-4 w-full lg:w-2/3 mx-auto">
+      <div className="flex flex-row items-center space-between my-4">
+        <div className="text-xl font-medium mx-1" data-test="app-heading">
           {"Dashboards"}
         </div>
         <div className="w-64 ml-auto">
