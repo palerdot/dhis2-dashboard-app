@@ -1,5 +1,7 @@
 # DHIS2 dashboard app
 
+[Deployed Version](https://dhis2dash.initdot.in/)
+
 The dashboard app is bootstrapped with `vite` `react-ts` template.
 
 Stack
